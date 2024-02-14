@@ -72,18 +72,27 @@ span {
 
 .navlist a {
     font-size: var(--p-font);
+    text-transform: capitalize;
     color: var(--other-color);
     margin-left: 40px;
     transition: all .50s ease;
     background: transparent;
+    position: relative;
+}
+.navlist a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: width 0.4s ease;
 }
 
-.navlist a:hover {
-    box-shadow: 3px 3px 20px var(--main-color),
-        -2px 1px 30px var(--text-color);
-    font-weight: 600;
+.navlist a:hover::before {
+    width: 100%;
 }
-
 #menuicon {
     font-size: 35px;
     cursor: pointer;
