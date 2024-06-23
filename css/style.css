@@ -9,11 +9,11 @@
 }
 
 :root {
-    --hue-color: 270;
+    --hue-color: 390;
     /* Violet */
 
     --bg-color: hsl(var(--hue-color), 10%, 95%);
-    /* Light violet background */
+    /* Light violet background 390, 300 */
     --text-color: hsl(var(--hue-color), 20%, 10%);
     /* Dark violet text */
     --second-bg-color: hsl(var(--hue-color), 20%, 80%);
@@ -302,11 +302,20 @@ header.sticky {
     align-items: center;
     gap: 2.3rem;
     margin-top: 4.2rem;
+   
+    
 }
 
-
+.services{
+    display: block;
+    align-items: center;
+    justify-content: center; 
+}
 .box {
-
+  
+    display: block;
+    align-items: center;
+    justify-content: center;
     padding: 80px 40px 66px;
     background: #2d343f;
     border: 1px solid transparent;
@@ -318,8 +327,9 @@ header.sticky {
 }
 
 .box img {
-    width: 50px;
-    height: 50px;
+   
+    width: 150px;
+    height: 150px;
     margin-bottom: 20px;
     border: 3px solid var(--main-color);
     border-radius: 9px;
@@ -414,9 +424,10 @@ header.sticky {
     width: 55px;
     height: 55px;
     font-size: 20px;
-    color: var(--text-color);
+    color:var(--main-color);
     border-radius: 50%;
     background: #075fe4;
+    box-shadow: 0 0 20px transparent;
 }
 
 .row h4 {
@@ -492,17 +503,17 @@ form:hover {
     align-items: center;
     padding: 1rem;
     margin: 0.9rem;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .input-fields input,
 textarea {
     width: 100%;
     /* Make input fields and textarea take up full width */
-    border: 1px solid rgb(255, 214, 214);
+    border: 1px solid var(--main-color);
     border-radius: 5px;
     background: transparent;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 8px;
     padding-left: 4px;
     font-weight: 500;
@@ -521,9 +532,9 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 25%;
     /* Make button take up full width */
-    background: transparent;
+    background: var(--main-color);
     border: 1px solid rgb(255, 214, 214);
     border-radius: 6px;
     color: white;
@@ -533,7 +544,7 @@ i {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     /* Positioning adjusted for better responsiveness */
     position: relative;
-    left: 0;
+    left: 36%;
     bottom: 0;
 }
 
