@@ -1,0 +1,346 @@
+
+<!-- write boiler-plate code -->
+<!-- link css and js file -->
+ <!-- add link of font-awesome -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link href="music_style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/023ea6d86e.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<!-- write boiler-plate code -->
+<!-- link css and js file -->
+ <!-- add link of font-awesome -->
+
+ 
+    <script src="music.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+<--step-2--->
+
+    <div class="container">
+        <div class="music-player">
+            
+        </div>
+    </div>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Default light mode */
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.music-player {
+    width: 400px;
+    padding: 25px 35px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 8px;
+    color: #333;
+}
+
+
+
+
+<---step-3 add nav--->
+ <nav>
+
+             <div class="circle">
+                    <i class="fa-solid fa-angle-left"></i>
+                </div>
+                <div class="circle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    color: #000000;
+    line-height: 40px;
+    box-shadow: 0 5px 10px rgba(255, 26, 26, .22);
+}
+
+
+
+<---step-4 img -heading-paragraph--->
+ <img src="king.jpeg" class="song-img" alt="Song Image">
+            <h1>Tu Aake Dekhle</h1>
+            <p>King</p>
+song-img {
+    width: 220px;
+    border-radius: 50%;
+    border: 8px solid #ff0000;
+    box-shadow: 0 10px 60px rgba(255, 26, 26, .22);
+}
+
+.music-player h1 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    margin-top: 20px;
+}
+
+.music-player p {
+    font-size: 14px;
+    color: #333;
+}
+
+
+
+<---step-5 add like-icon--->
+ <i class="fa-regular fa-heart" id="like-icon"></i>
+
+.music-player #like-icon {
+    position: relative;
+    left: 50%;
+    font-size: 25px;
+    bottom: 25px;
+    color: #fff;
+    /* Icon color */
+    background: #ccc;
+    /* Default background color */
+    border-radius: 50%;
+    /* Make it circular if you want */
+    padding: 10px;
+   
+    cursor: pointer;
+    /* Change cursor to pointer to indicate it's clickable */
+
+
+}
+
+
+
+<---step-6 add-audio--->
+
+            <audio controls id="song">
+                <source src="kaise Mujhe.mp3" type="audio/mpeg">
+            </audio>
+            
+           <div class="time-display">
+                <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+            </div> 
+
+.time-display {
+    color: #333;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+#current-time,
+#total-time {
+    display: inline-block;
+}
+
+.music-player span {
+    color: #333;
+    /* Text color for span elements in light mode */
+}            
+
+
+<---step-7 add progress-bar-controls--->
+  <input type="range" value="0" id="progress">
+            <div class="controls">
+                <div><i class="fa-solid fa-backward"></i></div>
+                <div onclick="playpause()"><i class="fa-solid fa-play" id="ctricon"></i></div>
+                <div><i class="fa-solid fa-forward"></i></div>
+            </div>
+        </div>
+    </div>
+
+#progress {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #000000;
+    border-radius: 4px;
+    margin: 40px 0;
+}
+
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #ff0000;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    box-shadow: 0 5px 5px rgba(255, 26, 26, .22);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls div {
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+    background: #eeeeee;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #000000;
+    box-shadow: 0 10px 20px rgba(255, 26, 26, .22);
+    cursor: pointer;
+}
+
+.controls div:nth-child(2) {
+    transform: scale(1.5);
+    background: #000000;
+    color: #fff;
+}
+
+
+<---write javascript-code-->
+let progress = document.getElementById('progress');
+let song = document.getElementById('song');
+let ctricon = document.getElementById('ctricon');
+let likeicon = document.getElementById('like-icon');
+let currentTimeDisplay = document.getElementById('current-time');
+let totalTimeDisplay = document.getElementById('total-time');
+let themeButton = document.getElementById('theme');
+
+likeicon.onclick = function () {
+    if (likeicon.style.background === 'red') {
+        likeicon.style.background = '#ccc'; // Default background color
+    } else {
+        likeicon.style.background = 'red'; // Changed background color
+    }
+}
+
+song.onloadeddata = function () {
+    progress.max = song.duration;
+    progress.value = song.currentTime;
+
+    // Format total time
+    totalTimeDisplay.textContent = formatTime(song.duration);
+}
+
+function playpause() {
+    if (ctricon.classList.contains("fa-pause")) {
+        song.pause();
+        ctricon.classList.remove("fa-pause");
+        ctricon.classList.add("fa-play");
+    } else {
+        song.play();
+        ctricon.classList.add("fa-pause");
+        ctricon.classList.remove("fa-play");
+        setInterval(() => {
+            progress.value = song.currentTime;
+            currentTimeDisplay.textContent = formatTime(song.currentTime);
+        }, 500);
+    }
+}
+
+progress.oninput = function () {
+    song.currentTime = progress.value;
+    if (!song.paused) {
+        ctricon.classList.add("fa-pause");
+        ctricon.classList.remove("fa-play");
+    }
+}
+
+// Function to format time in minutes and seconds
+function formatTime(seconds) {
+    let minutes = Math.floor(seconds / 60);
+    let secs = Math.floor(seconds % 60);
+    if (secs < 10) secs = '0' + secs;
+    return minutes + ':' + secs;
+}
+
+
+// Function to toggle theme
+function change() {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+        themeButton.textContent = 'Light Mode';
+    } else {
+        themeButton.textContent = 'Dark Mode';
+    }
+}
+
+// Set initial theme button text
+themeButton.textContent = 'Dark Mode';
+
+
+
+<---add-theme-button--->
+ <button id="theme">change theme</button>
+ 
+/* Dark mode styles */
+.dark-mode .container {
+    background: #000;
+}
+
+.dark-mode .music-player {
+    background: #222;
+    color: #ffffff;
+}
+
+.dark-mode .music-player h1,
+.dark-mode .music-player p,
+.dark-mode .music-player span {
+    color: #fff;
+    /* Text color for headings, paragraphs, and span elements in dark mode */
+}
+
+.dark-mode #theme {
+    background: #ffffff;
+    color: #000;
+}
+#theme {
+    width: 220px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 8px;
+    color: #fff;
+    background: black;
+    position: relative;
+    left: 45%;
+    top: 10%;
+}
