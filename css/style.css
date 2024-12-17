@@ -873,3 +873,88 @@ section.hero p {
     }
 
 }
+
+/* General Video Styling */
+video {
+    width: 90%; /* Makes video responsive */
+    max-width: 800px; /* Limits the maximum width for larger screens */
+    height: auto; /* Maintains aspect ratio */
+    margin: 20px auto; /* Centers the video */
+    display: block;
+    border: 5px solid #ddd; /* Adds a border around the video */
+    border-radius: 10px; /* Rounds the edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a soft shadow */
+}
+
+/* Hover Effect */
+video:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+/* Controls Alignment (Optional) */
+video::-webkit-media-controls {
+    display: flex;
+    justify-content: center;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    video {
+        width: 100%; /* Full width for smaller screens */
+        border-width: 3px; /* Adjust border thickness */
+    }
+}
+
+
+/* Certificate Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Dark overlay */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.modal img {
+    max-width: 90%; /* Limit image size for large screens */
+    max-height: 90%; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Hide Scrollbar when Modal is Open */
+body.modal-open {
+    overflow: hidden;
+}
